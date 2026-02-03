@@ -1,5 +1,11 @@
 export function Diferenciais() {
-  const diferenciais = [
+  type Diferencial = {
+    titulo: string;
+    descricao: string;
+    svg: string;
+  };
+
+  const diferenciais: Diferencial[] = [
     {
       titulo: '100% naturais',
       descricao: 'Sem hormônios ou antibióticos. Alimentação balanceada e natural.',

@@ -3,12 +3,7 @@
 export function Hero() {
   return (
     <section className="hero">
-      <div 
-        className="hero-bg" 
-        style={{
-          backgroundImage: "url('https://github.com/ffavareto/images/blob/main/IMG_0165.JPEG?raw=true')"
-        }}
-      />
+      <div className="hero-bg" />
       
       <div className="container hero-content">
         <h1>Do galinheiro para<br />sua mesa.</h1>

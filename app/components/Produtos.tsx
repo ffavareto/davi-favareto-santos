@@ -2,10 +2,22 @@
 
 import { usePedirNoZap } from '@/app/hooks/usePedirNoZap';
 
+type Produto = {
+  id: number;
+  tag: string;
+  titulo: string;
+  descricao: string;
+  preco: string;
+  imagem: string;
+  mensagem: string;
+  destaque: boolean;
+  buttonText: string;
+};
+
 export function Produtos() {
   const pedirNoZap = usePedirNoZap();
 
-  const produtos = [
+  const produtos: Produto[] = [
     {
       id: 1,
       tag: 'Para experimentar',
@@ -14,7 +26,8 @@ export function Produtos() {
       preco: 'A partir de R$ 18,00',
       imagem: 'https://github.com/ffavareto/images/blob/main/IMG_0149.JPEG?raw=true',
       mensagem: 'Gostaria de pedir um pente avulso de ovos.',
-      destaque: false
+      destaque: false,
+      buttonText: 'Pedir agora'
     },
     {
       id: 2,
@@ -24,7 +37,8 @@ export function Produtos() {
       preco: 'Frete Grátis na região',
       imagem: 'https://github.com/ffavareto/images/blob/main/IMG_0150.JPEG?raw=true',
       mensagem: 'Tenho interesse na assinatura de ovos.',
-      destaque: true
+      destaque: true,
+      buttonText: 'Assinar'
     },
     {
       id: 3,
@@ -34,7 +48,8 @@ export function Produtos() {
       preco: 'Consulte condições',
       imagem: 'https://github.com/ffavareto/images/blob/main/comercio.png?raw=true',
       mensagem: 'Tenho um comércio e gostaria de cotar ovos em atacado.',
-      destaque: false
+      destaque: false,
+      buttonText: 'Cotar agora'
     }
   ];
 
@@ -48,12 +63,12 @@ export function Produtos() {
           {produtos.map((produto) => (
             <div 
               key={produto.id} 
-              className="produto-card"
-              style={produto.destaque ? { border: '2px solid var(--cor-secundaria)' } : {}}
+              className={`produto-card ${produto.destaque ? 'destaque' : ''}`}
             >
-              <div 
+              <img 
                 className="produto-img" 
-                style={{ backgroundImage: `url('${produto.imagem}')` }}
+                src={produto.imagem}
+                alt={produto.titulo}
               />
               <div className="produto-info">
                 <span className="tag">{produto.tag}</span>
@@ -64,7 +79,7 @@ export function Produtos() {
                   className={`btn ${produto.destaque ? 'btn-secundario' : 'btn-primario'}`}
                   onClick={() => pedirNoZap(produto.mensagem)}
                 >
-                  {produto.id === 1 ? 'Pedir agora' : produto.id === 2 ? 'Assinar' : 'Cotar agora'}
+                  {produto.buttonText}
                 </button>
               </div>
             </div>

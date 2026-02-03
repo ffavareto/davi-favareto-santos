@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     follow: true,
   },
   alternates: {
-    canonical: 'https://davi-favareto-santos.vercel.app/', // TODO: Substitua pelo seu domínio
+    canonical: 'https://davi-favareto-santos.vercel.app/',
   },
 };
 
